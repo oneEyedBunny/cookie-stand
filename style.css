@@ -9,15 +9,17 @@ header {
 ul li {
   font-family: Georgia;
   font-size: 12px;
+  list-style-type: circle;
 }
 
 p {
   font-family: Georgia;
   font-size: 12px;
   text-indent: 35px;
+  line-height: 1em;
 }
 
- h1 {
+h1 {
    font-family: Verdana;
    color: #E59866;
 }
@@ -25,18 +27,23 @@ p {
 h1 + p {
   text-indent: 5px;
   font-size: 15px;
+  font-style: italic;
 }
 
 
  h2, h3 {
    font-family: Verdana;
    color: #58D68D;
- }
+}
 
-  h4{
+ h4{
      font-family: Verdana;
      color: #F6DDCC;
-   }
+}
+
+ /*h4:nth-child(2) {
+     color: red;
+}*/
 
  div {
    display: inline-block;
@@ -46,13 +53,16 @@ h1 + p {
    height: 40px;
    text-align: center;
    padding-top: 13px;
-   }
+   font-weight: bold;
+   color: 86, 101, 115;
+}
 
  #data {
    font-family: Courier-new;
    text-indent: 5px;
    font-size: 15px;
 }
+
 .color1 {
   background-color:#784212;
 }
