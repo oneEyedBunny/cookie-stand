@@ -1,8 +1,73 @@
-/*
-A custom Google font for highlights
-A specified standard san-serif web font for data (such as Arial, Verdana, or Helvetica)
-A specified standard serif web font for text (such as Georgia, Times, etc.)
-Specified different font colors for all three font usages
-A background color for the default page background (make sure font colors have good contrast and are readable on this background)
-A different background color for elements such as boxes and tables (so make sure the font colors contrast against this well, too!)
-Anything else you'd like to add related to style. But remember: simplicity, clarity, and consistency are good things in design.*/
+header {
+  font-family: Helvetica, sans-serif;
+  font-size: 35px;
+  color: #784212;
+  text-shadow: 1px 1px 5px #111111;
+  font-weight: bold;
+}
+
+ul li {
+  font-family: Georgia;
+  font-size: 12px;
+}
+
+p {
+  font-family: Georgia;
+  font-size: 12px;
+  text-indent: 35px;
+}
+
+ h1 {
+   font-family: Verdana;
+   color: #E59866;
+}
+
+h1 + p {
+  text-indent: 5px;
+  font-size: 15px;
+}
+
+
+ h2, h3 {
+   font-family: Verdana;
+   color: #58D68D;
+ }
+
+  h4{
+     font-family: Verdana;
+     color: #F6DDCC;
+   }
+
+ div {
+   display: inline-block;
+   border: solid 1px black;
+   margin: 2px;
+   width: 135px;
+   height: 40px;
+   text-align: center;
+   padding-top: 13px;
+   }
+
+ #data {
+   font-family: Courier-new;
+   text-indent: 5px;
+   font-size: 15px;
+}
+.color1 {
+  background-color:#784212;
+}
+.color2 {
+  background-color:#E59866;
+}
+.color3 {
+  background-color:#F6DDCC;
+}
+.color4 {
+  background-color:#D5F5E3;
+}
+.color5 {
+  background-color:#58D68D;
+}
+.color6 {
+  background-color:#7DCEA0;
+}

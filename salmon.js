@@ -1,4 +1,3 @@
-//objects for each store location and a random number generator
 var location1 = {
   name: "Pioneer Square",
   minCust: 17,
@@ -67,18 +66,71 @@ var cookiesPurchPerHour= function(location) {
 //function that builds out the hourly projections by each location
 function buildTable () {
   for (var i = 0; i < locations.length; i++ ) {
-    document.getElementById("location"+(i+1)).innerHTML +=locations[i].name;
+    var header = document.createElement("h3"); //69-71 takes the place of 73
+    header.innerText = locations[i].name ;
+    document.getElementById("location"+(i+1)).appendChild(header);
+
+    //document.getElementById("location"+(i+1)).innerHTML +="<h3>" + locations[i].name + "</h3>";
     var totalCookiesPerLocation = 0;
     for ( var k = 0; k < hoursInDay.length; k++) {
-      var cookies = cookiesPurchPerHour(locations[i]);//this will be called each time since it's a function, so this is why you need to nefine another
+      var cookies = cookiesPurchPerHour(locations[i]);//this will be called each time since it's a function, so this is why you need to define another
       //variable (aka totalCookiesPerLocation) instead of just cookies to hold the sum of each loop
-      var hourlyAnswer= "<li>" + hoursInDay[k] + ' : ' + cookies + ' cookies' +"</li>";
-      document.getElementById("location"+(i+1)).innerHTML += hourlyAnswer
+
+      var cookieListItem = document.createElement("li");//79-81 replaces line 83/84
+      cookieListItem.innerText =  hoursInDay[k] + ' : ' + cookies + ' cookies';
+      document.getElementById("location"+(i+1)).appendChild(cookieListItem);
+
+      // var hourlyAnswer= "<li>" + hoursInDay[k] + ' : ' + cookies + ' cookies' +"</li>";
+      // document.getElementById("location"+(i+1)).innerHTML += hourlyAnswer
       totalCookiesPerLocation += cookies;
     }
-    var grandTotal ="<li><b>" + "Grand Total: " + totalCookiesPerLocation + "</li>";
-    document.getElementById("location"+(i+1)).innerHTML += grandTotal
+    var grandTotal = document.createElement("li");//87-89 replace 91-92
+    grandTotal.innerText = "Grand Total: " + totalCookiesPerLocation;
+    document.getElementById("location"+(i+1)).appendChild(grandTotal);
+
+    // var grandTotal ="<li><b>" + "Grand Total: " + totalCookiesPerLocation + "</li>";
+    // document.getElementById("location"+(i+1)).innerHTML += grandTotal
   }
 }
 
 buildTable();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function addLocationsToList (a,b = "li"){
+//  var listToUse = document.getElementById("location1");
+//  var locationsToAdd = document.createElement(b);
+//  locationsToAdd.innertext = a;
+//  listToUse.appendChild(locationsToAdd);
+// }
+//
+// locations.push();
+//
+// for (i = 0; i < locations.length; i++){
+//   addLocationsToList("name", "li");
+//   addLocationsToList("minCust", "li");
+//   addLocationsToList("maxCust", "li");
+//   addLocationsToList ("customersPerHour")
+// }
