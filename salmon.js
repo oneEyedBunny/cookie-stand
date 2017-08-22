@@ -1,3 +1,16 @@
+//var Store = function (name, minCust, maxCust, avgCookieSale){
+//this.name = name;
+//this.minCust = minCust;
+//this.maxCust = maxCust;
+//this.avgCookieSale = avgCookieSale;
+//this.customersPerHour = function () {
+  //var randomCustomerQty = Math.floor((Math.random()*(this.maxCust-this.minCust)) + this.minCust);
+//add locations and give them location numbers
+
+
+
+
+}
 var location1 = {
   name: "Pioneer Square",
   minCust: 17,
@@ -84,7 +97,8 @@ function buildTable () {
       // document.getElementById("location"+(i+1)).innerHTML += hourlyAnswer
       totalCookiesPerLocation += cookies;
     }
-    var grandTotal = document.createElement("li");//87-89 replace 91-92
+    var grandTotal = document.createElement("l
+    i");//87-89 replace 91-92
     grandTotal.innerText = "Grand Total: " + totalCookiesPerLocation;
     document.getElementById("location"+(i+1)).appendChild(grandTotal);
 
