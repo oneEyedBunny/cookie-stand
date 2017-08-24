@@ -1,150 +1,67 @@
-//var Store = function (name, minCust, maxCust, avgCookieSale){
-//this.name = name;
-//this.minCust = minCust;
-//this.maxCust = maxCust;
-//this.avgCookieSale = avgCookieSale;
-//this.customersPerHour = function () {
-  //var randomCustomerQty = Math.floor((Math.random()*(this.maxCust-this.minCust)) + this.minCust);
-//add locations and give them location numbers
-
-
-
-
-}
-var location1 = {
-  name: "Pioneer Square",
-  minCust: 17,
-  maxCust: 88,
-  avgCookieSale: 5.2,
-  customersPerHour: function () {
-    var randomCustomerQty = Math.floor((Math.random()*(location1.maxCust-location1.minCust)) + location1.minCust);
+//construtor function for locations, cookie calc, & creation of row of data
+var Store = function (name, minCust, maxCust, avgCookieSale){
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookieSale = avgCookieSale;
+  this.customersPerHour = function () {
+    var randomCustomerQty = Math.floor((Math.random()*(this.maxCust-this.minCust)) + this.minCust);
     return randomCustomerQty;
-  }
-}
+ };
+  this.cookiesPurchPerHour = function() {
+      return  Math.floor(this.customersPerHour() * this.avgCookieSale);
+ };
+ //thinking constructor function wont work since it needs to repeat to the tune of the hours array
+ // this.createTableRow = function () {
+ // var colStart = document.createElement("tr");
+ // var storeLocations = document.createElement("th");
+ // storeLocations.innerText = this.name;
+ // colStart.appendChild(storeLocations)
+ //
+ // var cookies= document.createElement("td");
+ // cookies.innerText = this.cookiesPurchPerHour();
+ // colStart.appendChild(cookies);
 
-var location2= {
-  name: "Portland Airport",
-  minCust: 6,
-  maxCust: 24,
-  avgCookieSale: 1.2,
-  customersPerHour: function () {
-    var randomCustomerQty = Math.floor((Math.random()*(location2.maxCust-location2.minCust)) + location2.minCust);
-    return randomCustomerQty;
-  }
 }
-
-var location3 = {
-  name: "Washington Square",
-  minCust: 11,
-  maxCust: 38,
-  avgCookieSale: 1.9,
-  customersPerHour: function () {
-    var randomCustomerQty = Math.floor((Math.random()*(location3.maxCust-location3.minCust)) + location3.minCust);
-    return randomCustomerQty;
-  }
-}
-var location4 = {
-  name: "Sellwood",
-  minCust: 20,
-  maxCust: 48,
-  avgCookieSale: 3.3,
-  customersPerHour: function () {
-    var randomCustomerQty = Math.floor((Math.random()*(location4.maxCust-location4.minCust)) + location4.minCust);
-    return randomCustomerQty;
-  }
-}
-var location5 = {
-  name: "Pearl",
-  minCust: 3,
-  maxCust: 24,
-  avgCookieSale: 2.6,
-  customersPerHour: function () {
-    var randomCustomerQty = Math.floor((Math.random()*(location5.maxCust-location5.minCust)) + location5.minCust);
-    return randomCustomerQty;
-  }
-}
+//Array that holds all of the locations using the constructor function above
+var locations = [];
+locations.push(new Store("Pioneer Square", 17, 88, 5.2));
+locations.push(new Store("Portland Airport", 6, 24, 1.2));
+locations.push(new Store("Washington Square", 11, 38, 1.9));
+locations.push(new Store("Sellwood", 20, 48, 3.3));
+locations.push(new Store("Pearl", 3, 24, 2.6));
+//console.log(locations);
 
 //Array that holds the hours in the day
 var hoursInDay = ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
 
-//Array that holds all of the locations
-var locations = [location1, location2, location3, location4, location5];
 
-//calculation of the cookies needed per hour based on the random number of customers
-var cookiesPurchPerHour= function(location) {
-  return  Math.floor(location.customersPerHour() * location.avgCookieSale);
-};
-
-
-//function that builds out the hourly projections by each location
+//function to build out the actual list of hours/cookies
 function buildTable () {
-  for (var i = 0; i < locations.length; i++ ) {
-    var header = document.createElement("h3"); //69-71 takes the place of 73
-    header.innerText = locations[i].name ;
-    document.getElementById("location"+(i+1)).appendChild(header);
+  var tableBody = document.getElementById("cookieTable");
+  var rowStart = document.createElement("tr");
+  var hours = document.createElement("th");
+  rowStart.appendChild(hours);
+  tableBody.appendChild(rowStart);
 
-    //document.getElementById("location"+(i+1)).innerHTML +="<h3>" + locations[i].name + "</h3>";
-    var totalCookiesPerLocation = 0;
-    for ( var k = 0; k < hoursInDay.length; k++) {
-      var cookies = cookiesPurchPerHour(locations[i]);//this will be called each time since it's a function, so this is why you need to define another
-      //variable (aka totalCookiesPerLocation) instead of just cookies to hold the sum of each loop
+    for (l = 0; l < locations.length; l++){
+     var colStart = document.createElement("tr");
+     var storeLocations = document.createElement("th");
+     storeLocations.innerText = locations[l].name;
+     colStart.appendChild(storeLocations)
 
-      var cookieListItem = document.createElement("li");//79-81 replaces line 83/84
-      cookieListItem.innerText =  hoursInDay[k] + ' : ' + cookies + ' cookies';
-      document.getElementById("location"+(i+1)).appendChild(cookieListItem);
-
-      // var hourlyAnswer= "<li>" + hoursInDay[k] + ' : ' + cookies + ' cookies' +"</li>";
-      // document.getElementById("location"+(i+1)).innerHTML += hourlyAnswer
-      totalCookiesPerLocation += cookies;
+    for (h = 0; h < hoursInDay.length; h++){
+      if(l == 0){
+      hours = document.createElement("th");
+      hours.innerText = hoursInDay[h]; //what you want to fill the list with
+      rowStart.appendChild(hours);//what you want to append and with what
     }
-    var grandTotal = document.createElement("l
-    i");//87-89 replace 91-92
-    grandTotal.innerText = "Grand Total: " + totalCookiesPerLocation;
-    document.getElementById("location"+(i+1)).appendChild(grandTotal);
+      var cookies= document.createElement("td");
+      cookies.innerText = locations[l].cookiesPurchPerHour();
+      colStart.appendChild(cookies);
 
-    // var grandTotal ="<li><b>" + "Grand Total: " + totalCookiesPerLocation + "</li>";
-    // document.getElementById("location"+(i+1)).innerHTML += grandTotal
-  }
+       tableBody.appendChild(colStart);
+    }
+   }
 }
-
 buildTable();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function addLocationsToList (a,b = "li"){
-//  var listToUse = document.getElementById("location1");
-//  var locationsToAdd = document.createElement(b);
-//  locationsToAdd.innertext = a;
-//  listToUse.appendChild(locationsToAdd);
-// }
-//
-// locations.push();
-//
-// for (i = 0; i < locations.length; i++){
-//   addLocationsToList("name", "li");
-//   addLocationsToList("minCust", "li");
-//   addLocationsToList("maxCust", "li");
-//   addLocationsToList ("customersPerHour")
-// }
