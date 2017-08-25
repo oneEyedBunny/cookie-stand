@@ -1,9 +1,13 @@
 //construtor function for locations, cookie calc, & creation of row of data
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 var Store = function (name, minCust, maxCust, avgCookieSale){
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookieSale = avgCookieSale;
+  this.totalCookiesPerLocation = 0;
   this.customersPerHour = function () {
     var randomCustomerQty = Math.floor((Math.random()*(this.maxCust-this.minCust)) + this.minCust);
     return randomCustomerQty;
@@ -38,30 +42,47 @@ var hoursInDay = ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
 
 //function to build out the actual list of hours/cookies
 function buildTable () {
-  var tableBody = document.getElementById("cookieTable");
-  var rowStart = document.createElement("tr");
-  var hours = document.createElement("th");
-  rowStart.appendChild(hours);
+  var tableBody = document.getElementById("cookieTable");//connecting to HTML doc
+  var rowStart = document.createElement("tr"); //initial row in html
+  var hours = document.createElement("th"); //initial header
+  hours.innerText = "Store Locations";
+  rowStart.appendChild(hours); //header is blank
   tableBody.appendChild(rowStart);
 
-    for (l = 0; l < locations.length; l++){
+    for (l = 0; l < locations.length; l++){ //loops through location array
      var colStart = document.createElement("tr");
      var storeLocations = document.createElement("th");
      storeLocations.innerText = locations[l].name;
      colStart.appendChild(storeLocations)
 
-    for (h = 0; h < hoursInDay.length; h++){
+    for (h = 0; h < hoursInDay.length; h++){// loops through hours array
       if(l == 0){
-      hours = document.createElement("th");
-      hours.innerText = hoursInDay[h]; //what you want to fill the list with
-      rowStart.appendChild(hours);//what you want to append and with what
-    }
-      var cookies= document.createElement("td");
-      cookies.innerText = locations[l].cookiesPurchPerHour();
-      colStart.appendChild(cookies);
+        hours = document.createElement("th");
+        hours.innerText = hoursInDay[h];
+        rowStart.appendChild(hours);
+      }//closed if statement
+      var cookieData= document.createElement("td");
+      console.log(cookieData);
+      var cookies = locations[l].cookiesPurchPerHour();
+      cookieData.innerText = cookies;
+      colStart.appendChild(cookieData);
+      tableBody.appendChild(colStart); //puts location and cookie data in table
 
-       tableBody.appendChild(colStart);
-    }
-   }
-}
+      locations[l].totalCookiesPerLocation += cookies; //each hour loop it tallies the cookieData
+      console.log(locations[l].totalCookiesPerLocation)
+    }//closed inner for loop on hours
+
+     if (l == 0){ //runs inside of location loop
+       var grandTotalCol = document.createElement("th"); //final header
+       grandTotalCol.innerText = "Total";
+       rowStart.appendChild(grandTotalCol);
+     } //closes final if statement
+
+     var grandTotalData = document.createElement("td");// create cells for data
+     grandTotalData.innerText = numberWithCommas(locations[l].totalCookiesPerLocation); //fill the data with the total cookies by location
+     colStart.appendChild(grandTotalData);
+     tableBody.appendChild(colStart);
+  }//closed for loop on locations
+}//closes buildTable function
+
 buildTable();

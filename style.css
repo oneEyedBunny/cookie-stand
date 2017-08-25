@@ -1,9 +1,10 @@
 header {
   font-family: Helvetica, sans-serif;
-  font-size: 35px;
+  font-size: 55px;
   color: #784212;
   text-shadow: 1px 1px 5px #111111;
   font-weight: bold;
+  text-align: center;
 }
 
 ul li {
@@ -22,6 +23,8 @@ p {
 h1 {
    font-family: Verdana;
    color: #E59866;
+   margin-left: 400px;
+   margin-top: 300px;
 }
 
 h1 + p {
@@ -41,10 +44,6 @@ h1 + p {
      color: #F6DDCC;
 }
 
- /*h4:nth-child(2) {
-     color: red;
-}*/
-
  div {
    display: inline-block;
    border: solid 1px black;
@@ -55,6 +54,19 @@ h1 + p {
    padding-top: 13px;
    font-weight: bold;
    color: 86, 101, 115;
+}
+#quote {
+  width: 200px;
+  height: 90px;
+  margin: 20px;
+  padding-left: 10px;
+  padding-right: 25px;
+  border: none;
+  float: left;
+  font-size: 20px;
+  font-style: italic;
+  border-top: 1px solid #665544;
+  border-bottom: 1px solid #665544;
 }
 
  #data {
@@ -81,21 +93,56 @@ h1 + p {
 .color6 {
   background-color:#7DCEA0;
 }
-th , tr, td{
+.website {
+  text-align: center;
+  margin-left: 300px;
+  margin-top: 25px;
+}
+
+th , tr, td {
   border: 1px solid black;
   border-spacing: 2px solid black;
   background-color: #D5F5E3;
-  empty-cells; hide;
+  padding: 15px;
+  font-size: 20px;
 }
+
 th {
   color: #E59866;
 }
-img {
-  width: 400px;
-  }
-  body{
-    background-image: url ("https://raw.githubusercontent.com/mark-fitzgerald/code-201-n6/master/week_3-4/assets/salmon.png"):
-    background-repeat: repeat-y:
-    background-attachment: scroll;
-  
-  }
+
+/*tr:first-child > th:first-child,    /*store locations*/
+tr:first-child > th:last-child,     /*total*/
+tr:nth-child(2) > td:last-child,    /*pioneer square total*/
+tr:nth-child(3) > td:last-child,    /*portland airport total**/
+tr:nth-child(4) > td:last-child,
+tr:nth-child(5) > td:last-child,
+tr:nth-child(6) > td:last-child {
+  color: black;
+  background-color: #7DCEA0;
+  font-weight: bolder;
+}
+/*th:first-line {
+  color: red;
+}*/
+.background-image{
+  background-image: url("salmon.png");
+  background-repeat: repeat-x;
+  background-color: #F6DDCC;
+  background-position: 70% 10%;
+}
+
+/*.background-image:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(2468, 221, 204, .7);
+  }*/
+
+body {
+    background-color: #F6DDCC;
+    background-image: none;
+}
