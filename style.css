@@ -111,7 +111,10 @@ th {
   color: #E59866;
 }
 
-/*tr:first-child > th:first-child,    /*store locations*/
+tr:first-child > th:first-child {  /*store locations*/
+  font-style: italic;
+  }
+
 tr:first-child > th:last-child,     /*total*/
 tr:nth-child(2) > td:last-child,    /*pioneer square total*/
 tr:nth-child(3) > td:last-child,    /*portland airport total**/
