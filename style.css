@@ -23,8 +23,9 @@ p {
 h1 {
    font-family: Verdana;
    color: #E59866;
-   margin-left: 400px;
+   margin-left: 350px;
    margin-top: 300px;
+   display: inline-block;
 }
 
 h1 + p {
@@ -45,9 +46,9 @@ h1 + p {
 }
 
  div {
-   display: inline-block;
+   position: absolute;
    border: solid 1px black;
-   margin: 2px;
+   margin-top: 120px;
    width: 135px;
    height: 40px;
    text-align: center;
@@ -120,7 +121,8 @@ tr:nth-child(2) > td:last-child,    /*pioneer square total*/
 tr:nth-child(3) > td:last-child,    /*portland airport total**/
 tr:nth-child(4) > td:last-child,
 tr:nth-child(5) > td:last-child,
-tr:nth-child(6) > td:last-child {
+tr:nth-child(6) > td:last-child,
+tr:nth-child(7) > td:last-child {
   color: black;
   background-color: #7DCEA0;
   font-weight: bolder;
@@ -128,10 +130,9 @@ tr:nth-child(6) > td:last-child {
 /*th:first-line {
   color: red;
 }*/
-.background-image{
-  background-image: url("salmon.png");
+.background-image {
+  background-image: url("salmon.png"), linear-gradient(to top, white, pink, #F6DDCC);
   background-repeat: repeat-x;
-  background-color: #F6DDCC;
   background-position: 70% 10%;
 }
 
@@ -143,9 +144,42 @@ tr:nth-child(6) > td:last-child {
     right: 0;
     left: 0;
     background: rgba(2468, 221, 204, .7);
+
   }*/
 
 body {
     background-color: #F6DDCC;
     background-image: none;
+}
+
+#new-store-button{
+  display: inline-block;
+  margin-left: 40px;
+  width: 140px;
+  height: 25px;
+  border: 1px solid;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  background-color: #784212;
+
+}
+legend {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+fieldset {
+  display: inline-block;
+  color:#784212;
+  margin-left: 550px;
+  margin-top: 50px;
+}
+.store-form {
+  background-color: #white;
+}
+#new-store-info label {
+  width:155px;
+  display: inline-block;
+  padding-bottom: 10px;
 }
