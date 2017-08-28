@@ -144,7 +144,7 @@ var buildForm = function(){
 
 // function to submit store details into the cookie table and clear the new store form from the screen
   function submitFormDetails(){
-    var form = document.forms["new-store-form"];
+    var form = document.forms["new-store-form"]; //this is "forms" not "form" because the DOM creates several arrays automatically.
     var newName = form.elements["name"].value;
     var newMinCust = form.elements["minCust"].value;
     var newMaxCust = form.elements["maxCust"].value;
